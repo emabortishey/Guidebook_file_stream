@@ -20,7 +20,7 @@ public:
 	void set_addr(string addr_P) { Adress = addr_P; }
 	void set_occ(string occ_P) { Occupation = occ_P; }
 
-
+	 
 
 	string get_comp() { return Company_name; }
 	string get_owner() { return Owner; }
