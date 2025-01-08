@@ -5,20 +5,13 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 
-	Guidebook ttest("1", "2", "3", "4", "5");
-
-	char* test = new char[100];
+	Guidebook test;
 	
+	test.put_infile();
 
-	ifstream testfile2;
+	test.get_fromfile(2);
 
-	testfile2.open("test.txt");
-
-	testfile2.read((char*)test, sizeof("meow") / sizeof(char));
-
-	cout << test;
-
-	testfile2.close();
+	test.print_all();
 
 	return 0;
 }
