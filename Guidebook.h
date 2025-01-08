@@ -20,11 +20,29 @@ public:
 	void set_addr(string addr_P) { Adress = addr_P; }
 	void set_occ(string occ_P) { Occupation = occ_P; }
 
-	 
+	void put_infile(Guidebook* obj)
+	{
+		ofstream testfile;
 
-	string get_comp() { return Company_name; }
-	string get_owner() { return Owner; }
-	string get_num() { return Number; }
-	string get_addr() { return Adress; }
-	string get_occ() { return Occupation; }
+		testfile.open("Info.txt");
+
+		testfile.write(obj->get_comp(), sizeof(obj->get_comp()) / sizeof(char));
+		testfile.write((char*)&" ", sizeof " ");
+		testfile.write(obj->get_owner(), sizeof(obj->get_owner()) / sizeof(char));
+		testfile.write((char*)&" ", sizeof " ");
+		testfile.write(obj->get_num(), sizeof(obj->get_num()) / sizeof(char));
+		testfile.write((char*)&" ", sizeof " ");
+		testfile.write(obj->get_addr(), sizeof(obj->get_addr()) / sizeof(char));
+		testfile.write((char*)&" ", sizeof " ");
+		testfile.write(obj->get_occ(), sizeof(obj->get_occ()) / sizeof(char));
+		testfile.write((char*)&" ", sizeof " ");
+
+		testfile.close();
+	}
+
+	const char* get_comp() { return Company_name.c_str(); }
+	const char* get_owner() { return Owner.c_str(); }
+	const char* get_num() { return Number.c_str(); }
+	const char* get_addr() { return Adress.c_str(); }
+	const char* get_occ() { return Occupation.c_str(); }
 };
