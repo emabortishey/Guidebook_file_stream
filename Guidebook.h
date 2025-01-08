@@ -43,7 +43,7 @@ public:
 
 	void get_fromfile(int count = 1)
 	{
-		char* buff = new char[100];
+		string buff;
 
 		ifstream testfile;
 
@@ -57,16 +57,11 @@ public:
 			}
 		}
 
-		testfile >> buff;
-		Company_name = buff;
-		testfile >> buff;
-		Owner = buff;
-		testfile >> buff;
-		Number = buff;
-		testfile >> buff;
-		Adress = buff;
-		testfile >> buff;
-		Occupation = buff;
+		testfile >> Company_name;
+		testfile >> Owner;
+		testfile >> Number;
+		testfile >> Adress;
+		testfile >> Occupation;
 
 		testfile.close();
 	}
@@ -78,6 +73,32 @@ public:
 		cout << "\nPhone number: " << Number;
 		cout << "\nOffice adress: " << Adress;
 		cout << "\nOccupation: " << Occupation;
+	}
+
+	Guidebook search_by_compname(string obj)
+	{
+		Guidebook buff;
+		ifstream testfile;
+		int count = 0;
+
+		testfile.open("Info.txt");
+
+		while(count==0)
+		{
+			testfile >> buff.Company_name;
+			testfile >> buff.Owner;
+			testfile >> buff.Number;
+			testfile >> buff.Adress;
+			testfile >> buff.Occupation;
+			if (buff.Company_name == obj)
+			{
+				count++;
+			}
+		}
+
+		testfile.close();
+
+		return buff;
 	}
 
 	string get_comp() { return Company_name; }
