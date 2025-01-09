@@ -29,12 +29,15 @@ public:
 	const Company& search(string obj, int num = SEARCH_BY_COMPANY);
 };
 
-class Company_not_found : public exception
+// класс пользовательского исключения
+// который выбрасывается в случае не нахождения
+// искомого элемента методом поиска справочника
+class Company_not_exist : public exception
 {
 	string msg;
 
 public:
-	Company_not_found(string msg_P) : msg{ msg_P } { };
+	Company_not_exist(string msg_P) : msg{ msg_P } { };
 
 	virtual const char* what() const override
 	{

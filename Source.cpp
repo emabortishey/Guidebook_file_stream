@@ -37,6 +37,18 @@ int main()
 	// тест записи в файл класса справочник
 	test.write_infile();
 
+	// испытание выброса исключения при 
+	// попытке поиска несуществующей
+	// в справочнике компании
+	try
+	{
+		test.search("5");
+	}
+	catch (Company_not_exist obj)
+	{
+		cout << obj.what();
+	}
+
 	return 0;
 }
 

@@ -1,6 +1,6 @@
 #include "Guidebook.h"
 
-
+// метод вывода всех элементов списка
 void Guidebook::print_all()
 {
 	// с помощью цикла вызывается метод
@@ -12,6 +12,7 @@ void Guidebook::print_all()
 	}
 }
 
+// метод записи всех элементов списка
 void Guidebook::write_infile()
 {
 	// открытие файла в этом методе, обеспечивающая 
@@ -33,6 +34,8 @@ void Guidebook::write_infile()
 	testfile.close();
 }
 
+// метод перезаписи всех элементов
+// с помощью информации из файла
 void Guidebook::read_file()
 {
 	// переменная счётчик, которая показывает, какую
@@ -47,14 +50,27 @@ void Guidebook::read_file()
 	}
 }
 
+// метод поиска элемента списка по
+// компании/имени/номеру/роду занятия
+// обьект - строка, поиск которой будет
+// производиться, а целочисленный парамент - 
+// по какому аргументу будет происходить
+// поиск (я объеденила всё в 1 класс, добавив
+// перечисления для читабельности и свич,
+// чтобы сократить код, ведь он почти
+// идентичен. по умолчанию поиск 
+// происходит по названию компании
 const Company& Guidebook::search(string obj, int num)
 {
+	// цикл пробегает по всем элементам списка
 	for (auto buff : gbook)
 	{
 		switch (num)
 		{
+		// сравнение значения с перечислениями
 		case SEARCH_BY_COMPANY:
 		{
+			// в случае равенства возврат текущего элемента
 			if (buff.get_comp() == obj)
 			{
 				return buff;
@@ -93,5 +109,9 @@ const Company& Guidebook::search(string obj, int num)
 		}
 	}
 
-	throw Company_not_found("\n\nCompany that u r seekin for isn't exist in current class yet.\n\n");
+	// в случае если программа до сих
+	// не завершила работу метода,
+	// выбрасывается исключение о том, что
+	// искомая компания не существует
+	throw Company_not_exist("\n\nCompany that u r seekin for isn't exist in current class yet.\n\n");
 }
