@@ -1,7 +1,7 @@
 #include "Guidebook.h"
 
 // метод вывода всех элементов списка
-void Guidebook::print_all()
+void Guidebook::print_all() const noexcept
 {
 	// с помощью цикла вызывается метод
 	// вывода для каждого элемента списка
@@ -13,7 +13,7 @@ void Guidebook::print_all()
 }
 
 // метод записи всех элементов списка
-void Guidebook::write_infile()
+void Guidebook::write_infile() const noexcept
 {
 	// открытие файла в этом методе, обеспечивающая 
 	// запись всех элементов, а не только последнего 
@@ -36,7 +36,7 @@ void Guidebook::write_infile()
 
 // метод перезаписи всех элементов
 // с помощью информации из файла
-void Guidebook::read_file()
+void Guidebook::read_file() noexcept
 {
 	// переменная счётчик, которая показывает, какую
 	// по счёту группу элементов из файла необходимо 
@@ -60,7 +60,7 @@ void Guidebook::read_file()
 // чтобы сократить код, ведь он почти
 // идентичен. по умолчанию поиск 
 // происходит по названию компании
-const Company& Guidebook::search(string obj, int num)
+const Company& Guidebook::search(string obj, int num) const
 {
 	// цикл пробегает по всем элементам списка
 	for (auto buff : gbook)

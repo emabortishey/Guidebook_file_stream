@@ -1,7 +1,7 @@
 #include "Company.h"
 
 // метод записи в файл
-void Company::put_infile()
+void Company::put_infile() const noexcept
 {
 	// создание обьекта класса для записи
 	ofstream testfile;
@@ -21,7 +21,7 @@ void Company::put_infile()
 }
 
 // перегрузка метода записи в файл, принимающая уже открытый файл
-void Company::put_infile(ofstream& testfile)
+void Company::put_infile(ofstream& testfile) const noexcept
 {
 	testfile << this->get_comp() << ' ';
 	testfile << this->get_owner() << ' ';
@@ -31,7 +31,7 @@ void Company::put_infile(ofstream& testfile)
 }
 
 // метод взятия из файла содержащий парамент каунт по умолчанию
-void Company::get_fromfile(int count)
+void Company::get_fromfile(int count) noexcept
 {
 	// буферная строка в которую будет записываться всё до
 	// нахождения нужной группы элементов файла
@@ -68,7 +68,7 @@ void Company::get_fromfile(int count)
 }
 
 // метод вывода всех атрибутов на экран
-void Company::print_all()
+void Company::print_all() const noexcept
 {
 	cout << "\nCompany name: " << Company_name;
 	cout << "\nOwner's name: " << Owner;
@@ -82,7 +82,7 @@ void Company::print_all()
 // и решила оставить, не смотря на то, 
 // что переделала по уже заданию
 
-//Company Company::search_by_compname(string obj)
+//Company Company::search_by_compname(string obj) const noexcept
 //{
 //	Company buff;
 //	ifstream testfile;
@@ -108,7 +108,7 @@ void Company::print_all()
 //	return buff;
 //}
 //
-//Company Company::search_by_owner(string obj)
+//Company Company::search_by_owner(string obj) const noexcept
 //{
 //	Company buff;
 //	ifstream testfile;
@@ -134,7 +134,7 @@ void Company::print_all()
 //	return buff;
 //}
 //
-//Company Company::search_by_number(string obj)
+//Company Company::search_by_number(string obj) const noexcept
 //{
 //	Company buff;
 //	ifstream testfile;
@@ -160,7 +160,7 @@ void Company::print_all()
 //	return buff;
 //}
 //
-//Company Company::search_by_occupation(string obj)
+//Company Company::search_by_occupation(string obj) const noexcept
 //{
 //	Company buff;
 //	ifstream testfile;

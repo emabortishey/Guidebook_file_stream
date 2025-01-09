@@ -15,18 +15,18 @@ public:
 	Guidebook() { };
 
 	// метод добавления нового элемента
-	void add_company(Company& new_comp) { gbook.push_back(new_comp); }
+	void add_company(Company& new_comp) noexcept { gbook.push_back(new_comp); }
 
 	// метод вывода всех элементов
-	void print_all();
+	void print_all() const noexcept;
 
 	// метод записи в файл
-	void write_infile();
+	void write_infile() const noexcept;
 
 	// метод взятия из файла
-	void read_file();
+	void read_file() noexcept;
 
-	const Company& search(string obj, int num = SEARCH_BY_COMPANY);
+	const Company& search(string obj, int num = SEARCH_BY_COMPANY) const;
 };
 
 // класс пользовательского исключения
