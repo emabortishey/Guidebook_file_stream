@@ -1,10 +1,11 @@
 #pragma once
 #include <iostream>
 #include <fstream>
+#include <list>
 
 using namespace std;
 
-class Guidebook
+class Company
 {
 	string Company_name;
 	string Owner;
@@ -13,12 +14,12 @@ class Guidebook
 	string Occupation;
 
 public:
-	Guidebook() : Company_name{ "Noname" }, Owner{ "John-Doe" }, Number{ "212-85-06" }, Adress{ "Florida" }, Occupation{ "Homeless" } { };
-	Guidebook(string comp_P) : Company_name{ comp_P }, Owner{ "John-Doe" }, Number{ "212-85-06" }, Adress{ "Florida" }, Occupation{ "Homeless" } { };
-	Guidebook(string comp_P, string name_P) : Company_name{ comp_P }, Owner{ name_P }, Number{ "212-85-06" }, Adress{ "Florida" }, Occupation{ "Homeless" } { };
-	Guidebook(string comp_P, string name_P, string num_P) : Company_name{ comp_P }, Owner{ name_P }, Number{ num_P }, Adress{ "Florida" }, Occupation{ "Homeless" } { };
-	Guidebook(string comp_P, string name_P, string num_P, string adr_P) : Company_name{ comp_P }, Owner{ name_P }, Number{ num_P }, Adress{ adr_P }, Occupation{ "Homeless" } { };
-	Guidebook(string comp_P, string name_P, string num_P, string adr_P, string occ_P) : Company_name{ comp_P }, Owner{ name_P }, Number{ num_P }, Adress{ adr_P }, Occupation { occ_P } { };
+	Company() : Company_name{ "Noname" }, Owner{ "John-Doe" }, Number{ "212-85-06" }, Adress{ "Florida" }, Occupation{ "Homeless" } { };
+	Company(string comp_P) : Company_name{ comp_P }, Owner{ "John-Doe" }, Number{ "212-85-06" }, Adress{ "Florida" }, Occupation{ "Homeless" } { };
+	Company(string comp_P, string name_P) : Company_name{ comp_P }, Owner{ name_P }, Number{ "212-85-06" }, Adress{ "Florida" }, Occupation{ "Homeless" } { };
+	Company(string comp_P, string name_P, string num_P) : Company_name{ comp_P }, Owner{ name_P }, Number{ num_P }, Adress{ "Florida" }, Occupation{ "Homeless" } { };
+	Company(string comp_P, string name_P, string num_P, string adr_P) : Company_name{ comp_P }, Owner{ name_P }, Number{ num_P }, Adress{ adr_P }, Occupation{ "Homeless" } { };
+	Company(string comp_P, string name_P, string num_P, string adr_P, string occ_P) : Company_name{ comp_P }, Owner{ name_P }, Number{ num_P }, Adress{ adr_P }, Occupation { occ_P } { };
 
 	void set_comp(string comp_P) { Company_name = comp_P; }
 	void set_name(string name_P) { Owner = name_P; }
@@ -75,9 +76,9 @@ public:
 		cout << "\nOccupation: " << Occupation;
 	}
 
-	Guidebook search_by_compname(string obj)
+	Company search_by_compname(string obj)
 	{
-		Guidebook buff;
+		Company buff;
 		ifstream testfile;
 		int count = 0;
 
@@ -101,9 +102,9 @@ public:
 		return buff;
 	}
 
-	Guidebook search_by_owner(string obj)
+	Company search_by_owner(string obj)
 	{
-		Guidebook buff;
+		Company buff;
 		ifstream testfile;
 		int count = 0;
 
@@ -127,9 +128,9 @@ public:
 		return buff;
 	}
 
-	Guidebook search_by_number(string obj)
+	Company search_by_number(string obj)
 	{
-		Guidebook buff;
+		Company buff;
 		ifstream testfile;
 		int count = 0;
 
@@ -153,9 +154,9 @@ public:
 		return buff;
 	}
 
-	Guidebook search_by_occupation(string obj)
+	Company search_by_occupation(string obj)
 	{
-		Guidebook buff;
+		Company buff;
 		ifstream testfile;
 		int count = 0;
 
@@ -184,4 +185,45 @@ public:
 	string get_num() { return Number; }
 	string get_addr() { return Adress; }
 	string get_occ() { return Occupation; }
+};
+
+class Guidebook
+{
+	list<Company> gbook;
+
+public:
+	Guidebook() { };
+
+	void add_company(Company& new_comp)
+	{
+		gbook.push_back(new_comp);
+	}
+
+	void print_all()
+	{
+		for (auto buff : gbook)
+		{
+			buff.print_all();
+			cout << '\n';
+		}
+	}
+
+	void write_infile()
+	{
+		for (auto buff : gbook)
+		{
+			buff.put_infile();
+		}
+	}
+
+	void read_file()
+	{
+		int count = 1;
+
+		for (auto buff : gbook)
+		{
+			buff.get_fromfile(count);
+			count++;
+		}
+	}
 };
