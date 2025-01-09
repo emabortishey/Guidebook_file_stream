@@ -26,5 +26,18 @@ public:
 	// метод взятия из файла
 	void read_file();
 
-	const Company& search(string obj, int num = SEARCH_BY_COMPANY)
+	const Company& search(string obj, int num = SEARCH_BY_COMPANY);
+};
+
+class Company_not_found : public exception
+{
+	string msg;
+
+public:
+	Company_not_found(string msg_P) : msg{ msg_P } { };
+
+	virtual const char* what() const override
+	{
+		return msg.c_str();
+	}
 };

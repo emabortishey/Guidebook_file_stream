@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <list>
+#include <exception>
 
 using namespace std;
 

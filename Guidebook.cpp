@@ -92,4 +92,6 @@ const Company& Guidebook::search(string obj, int num)
 		}
 		}
 	}
+
+	throw Company_not_found("\n\nCompany that u r seekin for isn't exist in current class yet.\n\n");
 }
