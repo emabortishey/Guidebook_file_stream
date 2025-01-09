@@ -28,6 +28,8 @@ int main()
 
 	test.print_all();
 
+	test.write_infile();
+
 	return 0;
 }
 
